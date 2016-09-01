@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件对象</title>
+</head>
+<body>
+	<p>
+		function ev(event) {
+			var e=event || window.event;
+			alert(event.type);
+		}
+	</p>
+	<input id="a" type="button" name="o" value="函数方法" onclick="ev(event)">
+	<p>
+		'&lt;input type="button" name="p" value="内敛js代码" onclick="alert(event.type);&gt;'
+	</p>
+	<input type="button" name="p" value="内敛js代码" onclick="alert(event.type);">
+	<script type="text/javascript">
+		function ev(event) {
+			var e=event || window.event;
+			alert(event.type);
+		}
+	</script>
+</body>
+</html>

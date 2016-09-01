@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>beforeunload</title>
+</head>
+<body>
+	<script type="text/javascript">
+		window.onbeforeunload = function (event) {
+			alert(1)
+			event.returnValue="确定离开当前页面吗？";
+		}
+	</script>
+</body>
+</html>

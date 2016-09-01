@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	function handle(event) {
+		e = event || window.event;
+		console.log(e.wheelDelta || e.detail)
+	}
+	window.onmousewheel = handle;
+	if(document.addEventListener){
+    document.addEventListener('DOMMouseScroll',handle,false);
+	}
+</script>
+</body>
+</html>

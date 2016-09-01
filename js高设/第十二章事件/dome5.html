@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>鼠标事件修改键</title>
+</head>
+<body>
+	<div id="a" style="width: 100px; height: 100px; background: red;"></div>
+
+	<script type="text/javascript">
+		var div1 = document.getElementById('a');
+		div1.onclick = function (event) {
+			var e = event || window.event,
+			keys = [];
+
+			if(event.shiftKey){
+				keys.push("shift");
+			}
+			if(event.ctrlKey){
+				keys.push("ctrl");
+			}
+			if(event.altKey){
+				keys.push("alt");
+			}
+			if(event.metaKey){
+				keys.push("meta");
+			}
+
+			alert('keys: ' + keys.join(","));
+		}
+	</script>
+</body>
+</html>

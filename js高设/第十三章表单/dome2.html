@@ -1,0 +1,15 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+
+<input id="a" type="text" value="abc" size="5" maxlength="10" name="" style="width: 300px">
+<textarea rows="3" cols="20">assssssssssssssssswsssssssssssssssssssssssstextarea无maxlength属性</textarea>
+<script type="text/javascript">
+	var a = document.getElementById('a');
+	console.log(a.value,'有width的时候，size不管用');
+	a.value = 'abcabcabcabcabc';
+	console.log(a.value);
+
+</script>
+</body>
+</html>

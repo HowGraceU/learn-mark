@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <input id="text" type="text" name="" value="1">
+  <input id="button" type="button" name="" value="button">
+  <script type="text/javascript" src="jquery-3.0.0.js"></script>
+  <script type="text/javascript">
+    $('input[type="button"]').on('click',function(event){
+      $(this).val('click')
+    }.bind($('input[type="text"]')))
+  </script>
+</body>
+</html>

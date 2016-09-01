@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input id="textbox" type="text" value="1234567890" name="">
+	<script type="text/javascript">
+		var textbox = document.getElementById('textbox');
+		// console.log(textbox.setSelectionRange(0,4))
+
+		//IE
+		var range = textbox.createTextRange();
+
+		range.collapse(true);//必须使用，将范围折叠到文本框的开始位置
+		range.moveStart('character', 0);
+		range.moveEnd('character', 6);
+		range.select();
+	</script>
+</body>
+</html>

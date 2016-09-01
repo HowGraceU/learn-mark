@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>一些其他属性方法</title>
+</head>
+<body>
+	<a id="link" href="baidu.com">阻住链接默认行为</a>
+	<input id="stopB" type="button" name="" value="stopBubble">
+	<input id="eventP" type="button" name="" value="eventPhase">
+
+	<script type="text/javascript">
+		var link = document.getElementById('link');
+		link.onclick = function (event) {
+			console.log(event.cancelable);
+			event.preventDefault();
+			console.log(event.cancelable);
+		}
+
+		var button = document.getElementById('stopB');
+		button.onclick = function (event) {
+			console.log(event.bubbles);
+			event.stopPropagation();
+			console.log(event.bubbles);
+		}
+
+		var button2 = document.getElementById('eventP');
+		button2.onclick = function (event) {
+			alert('处于目标时候的input触发,eventPhase状态为  '+event.eventPhase);
+		}
+		document.body.addEventListener ('click', function (event) {
+			alert('事件捕获时候的body触发,eventPhase状态为  '+event.eventPhase);
+		},true)
+		document.body.onclick = function (event) {
+			alert('事件冒泡时候的body触发,eventPhase状态为  '+event.eventPhase);
+		}
+	</script>
+</body>
+</html>

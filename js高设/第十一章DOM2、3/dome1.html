@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>移除范围</title>
+</head>
+<body>
+	<form  onclick="input()">
+		<p id="p"><b>Hello</b> world!</p>
+		<input id="input1" type="button" name="" value="remove">
+		<input id="input2" type="button" name="" value="extract and append">
+		<input id="input3" type="button" name="" value="insert">
+		<input id="input4" type="button" name="" value="surround">
+		<input id="input5" type="button" name="" value="clone">
+	</form>
+	<script type="text/javascript">
+		function input() {
+			var e = arguments.callee.caller.arguments[0] || window.event;
+			var target = e.target || e.srcElement;
+			var p = document.getElementById("p"),
+			helloNode = p.firstChild.firstChild,
+			worldNode = p.lastChild,
+			range = document.createRange();
+
+			range.setStart(helloNode, 2);
+			range.setEnd(worldNode, 2);
+
+			switch (target.id){
+				case 'input1' : range.deleteContents();
+							break;
+				case 'input2' : var newNode = range.extractContents();
+					p.parentNode.appendChild(newNode);
+							break;
+				case 'input3' : var span = document.createElement('span');
+					span.style.color = 'red';
+					span.appendChild(document.createTextNode("this insert text"));
+					range.insertNode(span);
+							break;
+				case 'input4' : var span = document.createElement('span');
+					span.style.backgroundColor = "red";
+					console.log(range)
+					range.setEnd(helloNode,4);
+					range.surroundContents(span);
+							break;
+				case 'input5' : var newRange = range.cloneRange();
+					alert("不知道有什么用")
+					p.parentNode.appendChild(newRange);
+							break;
+			}
+		}
+	</script>
+</body>
+</html>

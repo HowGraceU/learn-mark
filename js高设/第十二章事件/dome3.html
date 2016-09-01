@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>type</title>
+</head>
+<body>
+	<div id="a" style="width: 100px; height: 100px; background: red;"></div>
+	<script type="text/javascript">
+		var div1 = document.getElementById('a');
+		a.onclick = function(event){
+			handler(event);
+		};
+		a.onmouseenter = handler;
+		a.onmouseleave = handler;
+
+		function handler(event) {
+			var e = event || window.event;
+			var target = e.target || e.srcElement;
+
+			switch(e.type){
+				case 'click':
+					alert('click');
+					break;
+
+				case 'mouseenter':
+					target.style.backgroundColor = 'green';
+					break;
+
+				case 'mouseleave':
+					target.style.backgroundColor = 'blue';
+					break;
+			}
+
+		}
+
+	</script>
+</body>
+</html>
