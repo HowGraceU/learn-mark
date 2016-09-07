@@ -1,0 +1,38 @@
+﻿<html>
+<body>
+
+<select>
+  <option value="volvo">Volvo</option>
+  <option>Saab</option>
+  <option value="">Mercedes</option>
+  <option value>Audi</option>
+</select>
+<input type="button" value='插入jqx在第一个前' id="add" name="">
+<input type="button" value='删2' id='remove' name="">
+
+<script type="text/javascript">
+window.onload = function () {
+	var select = document.getElementsByTagName('select')[0];
+
+	select.selectedIndex = 1;
+	console.log(select.multiple,select.options,select.size)
+
+	select.onchange = function (event) {
+		console.log(select.selectedIndex,select.value)
+	}
+
+	document.getElementById('add').onclick = function() {
+		var option = document.createElement('option');
+		option.value = 'jqx';
+		option.text = 'jqx';
+
+		select.add(option,select.firstChild);
+	}
+
+	document.getElementById('remove').onclick = function () {
+		select.remove(1)
+	}
+}
+</script>
+</body>
+</html>

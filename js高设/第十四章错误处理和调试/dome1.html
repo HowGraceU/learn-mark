@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		try{
+			alert('name' in true)
+		} catch (error){
+			console.log(error.message);
+			if(error instanceof TypeError){
+				console.log('TypeError')
+			} else if(error instanceof ReferenceError){
+				console.log('ReferenceError')
+			} else if(error instanceof RangeError){
+				console.log('RangeError')
+			} else {
+				console.log('otherError')
+			}
+		}
+		try{
+			var a = x;
+		} catch (error){
+			console.log(error.message);
+			if(error instanceof TypeError){
+				console.log('TypeError')
+			} else if(error instanceof ReferenceError){
+				console.log('ReferenceError')
+			} else if(error instanceof RangeError){
+				console.log('RangeError')
+			} else {
+				console.log('otherError')
+			}
+		}
+		try{
+			var a = new Array(-1);
+		} catch (error){
+			console.log(error.message);
+			if(error instanceof TypeError){
+				console.log('TypeError')
+			} else if(error instanceof ReferenceError){
+				console.log('ReferenceError')
+			} else if(error instanceof RangeError){
+				console.log('RangeError')
+			} else {
+				console.log('otherError')
+			}
+		}
+	</script>
+</body>
+</html>

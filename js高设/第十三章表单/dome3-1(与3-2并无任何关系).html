@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input id="a" type="text" name="" value="1234567890">
+<script type="text/javascript">
+	var textbox = document.getElementById('a');
+	textbox.addEventListener? textbox.addEventListener('select',handle,false): textbox.attachEvent('onselect',handle);
+
+	function handle(event) {
+		if(document.selection){//IE低版本
+			console.log(document.selection.createRange().text);
+		} else {
+			console.log(textbox.value.substring(textbox.selectionStart, textbox.selectionEnd))
+		}
+	}
+</script>
+</body>
+</html>

@@ -5,17 +5,41 @@
 	<title>Document</title>
 </head>
 <body>
-	<input id="a" type="text" name="">
+	<input id="a" type="text" name="" value="1234567890">
 	<script type="text/javascript">
 		var text = document.getElementById('a');
 		text.onbeforecopy = handle;
 		text.onbeforecut = handle;
 		text.onbeforepaste = handle;
+		text.oncopy = handle;
+		text.oncut = handle;
+		text.onpaste = handle;
 
 		function handle(e) {
 			var event = e || window.event;
-			console.log(e.type)
-			e.preventDefault();
+			console.log(event.type)
+			// e.preventDefault();
+
+			getClipboardText(event);
+
+			event.type === 'copy'? setClipboardText(event, 'jqx'): {};
+
+			getClipboardText(event);
+		}
+
+		function getClipboardText(event) {//只在粘贴的时候有值
+			var data = event.clipboardData || window.clipboardData;
+			console.log(data.getData('text'))
+		}
+
+		function setClipboardText(event, value) {
+			event.preventDefault();
+
+			if(event.clipboardData){
+				console.log(event.clipboardData.setData('text/plain', value))
+			} else if(window.clipboardData){
+				console.log(event.clipboardData.setData('text', value))
+			}
 		}
 	</script>
 </body>
