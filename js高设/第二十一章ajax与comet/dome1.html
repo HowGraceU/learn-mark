@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form id="file-form" name="file-form">
+		<input type="text" name="">
+		<input type="file" name="">
+	</form>
+	<script type="text/javascript">
+var oMyForm = new FormData();
+ 
+oMyForm.append("username", "Groucho");
+oMyForm.append("accountnum", 123456); // 数字123456被立即转换成字符串"123456"
+ 
+// fileInputElement中已经包含了用户所选择的文件
+oMyForm.append("userfile", fileInputElement.files[0]);
+ 
+var oFileBody = "<a id="a"><b id="b">hey!</b></a>"; // Blob对象包含的文件内容
+var oBlob = new Blob([oFileBody], { type: "text/xml"});
+ 
+oMyForm.append("webmasterfile", oBlob);
+ 
+var oReq = new XMLHttpRequest();
+oReq.open("POST", "http://foo.com/submitform.php");
+oReq.send(oMyForm);
+//或者直接用ajax send
+oReq.send(new FormData(document.forms['file-form']));
+//你还可以不借助 HTML 表单，直接向 FormData 对象中添加一个 File 对象或者一个 Blob 对象：
+//data.append("myfile", myBlob);
+	</script>
+</body>
+</html>
