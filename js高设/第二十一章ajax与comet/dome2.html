@@ -29,9 +29,9 @@
 		}
 
 		var client = createStreamingClient("dome2.php", function(data){
-			alert("Received: " + data);
+			console.log("Received: " + data);
 		}, function(data){
-			alert("Done!");
+			console.log("Done!");
 		});
 	</script>
 </body>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var source = new EventSource("dome2.php");// readyState属性，值为 0 表示正连接到服务器，值为 1表示打开了连接，值为 2 表示关闭了连接。
+
+		source.onmessage = function(event){
+			var data = event.data;
+			//处理数据
+		};
+
+		// source.close();
+	</script>
+</body>
+</html>
