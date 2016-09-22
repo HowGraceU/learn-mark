@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function Polygon(sides){
+			if (this instanceof Polygon) {
+				this.sides = sides;
+				this.getArea = function(){
+				return 0;
+				};
+			} else {
+				return new Polygon(sides);
+			}
+		}
+
+		function Rectangle(width, height){
+			Polygon.call(this, 2);
+			this.width = width;
+			this.height = height;
+			this.getArea = function(){
+			return this.width * this.height;
+			};
+		}
+
+		// Rectangle.prototype = new Polygon();
+		//
+
+		var rect = new Rectangle(5, 10);
+		console.log(rect.sides); //undefined
+		//this 对象并非 Polygon 的实例，所以会创建并返回一个新的 Polygon 对象。Rectangle 构造函数中的 this 对象并没有得到增长，同时 Polygon.call()返回的值也没有用到，所以 Rectangle 实例中就不会有 sides 属性。
+
+
+	</script>
+</body>
+</html>
