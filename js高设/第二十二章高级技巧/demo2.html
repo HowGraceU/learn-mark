@@ -27,7 +27,7 @@
 		}
 
 		// Rectangle.prototype = new Polygon();
-		//
+		//如果构造函数窃取结合使用原型链或者寄生组合则可以解决这个问题。
 
 		var rect = new Rectangle(5, 10);
 		console.log(rect.sides); //undefined
