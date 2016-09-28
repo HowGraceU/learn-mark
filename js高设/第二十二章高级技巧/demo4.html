@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		'use strict'
+		var person = { name: "Nicholas" };
+		console.log(Object.isExtensible(person)); //true
+
+		Object.preventExtensions(person);
+		console.log(Object.isExtensible(person)); //false 
+		person.age = 29;//严格模式报错
+		console.log(person.age); //undefined
+	</script>
+</body>
+</html>
