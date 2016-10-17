@@ -30,7 +30,7 @@
 		//如果构造函数窃取结合使用原型链或者寄生组合则可以解决这个问题。
 
 		var rect = new Rectangle(5, 10);
-		console.log(rect.sides); //undefined
+		console.log(rect,rect.sides); //undefined
 		//this 对象并非 Polygon 的实例，所以会创建并返回一个新的 Polygon 对象。Rectangle 构造函数中的 this 对象并没有得到增长，同时 Polygon.call()返回的值也没有用到，所以 Rectangle 实例中就不会有 sides 属性。
 
 
