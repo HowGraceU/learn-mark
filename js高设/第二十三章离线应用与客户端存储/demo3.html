@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+	function openDB (name,version) {
+    var version=version || 1;
+    var request=window.indexedDB.open(name,version);
+    request.onerror=function(e){
+      console.log(e.currentTarget.error.message);
+    };
+    request.onsuccess=function(e){
+      myDB.db=e.target.result;
+    	console.log('success', myDB.db)
+    };
+    request.onupgradeneeded=function(e){
+      var db=e.target.result;
+      if(!db.objectStoreNames.contains('students')){
+        db.createObjectStore('students',{keyPath:"id"});
+        //db.createObjectStore('students',{autoIncrement: true});
+      }
+      console.log('DB version changed to '+version);
+    };
+	}
+
+	var students=[{ 
+    id:1001, 
+    name:"Byron", 
+    age:24 
+  },{ 
+    id:1002, 
+    name:"Frank", 
+    age:30 
+  },{ 
+    id:1003, 
+    name:"Aaron", 
+    age:26 
+  }];
+
+  var myDB={
+    name:'test',
+    version:3,
+    db:null
+  };
+
+  function addData(db,storeName){
+	  var transaction=db.transaction(storeName,'readwrite');
+	  var store=transaction.objectStore(storeName);
+
+	  for(var i=0;i<students.length;i++){
+      store.add(students[i]);
+	  }
+  }
+
+	openDB(myDB.name,myDB.version);
+
+	//	此处应该用callback
+  setTimeout(function(){
+    // addData(myDB.db,'students');
+  },1000);
+
+  function getDataByKey(db,storeName,value){
+	  var transaction=db.transaction(storeName,'readwrite');
+	  var store=transaction.objectStore(storeName); 
+	  var request=store.get(value); 
+	  request.onsuccess=function(e){ 
+      var student=e.target.result; 
+      console.log(student.name); 
+	  };
+	}
+
+	function updateDataByKey(db,storeName,value){
+    var transaction=db.transaction(storeName,'readwrite'); 
+    var store=transaction.objectStore(storeName); 
+    var request=store.get(value); 
+    request.onsuccess=function(e){ 
+	    var student=e.target.result; 
+	    student.age=35;
+	    store.put(student); 
+    };
+	}
+
+	function deleteDataByKey(db,storeName,value){
+    var transaction=db.transaction(storeName,'readwrite'); 
+    var store=transaction.objectStore(storeName); 
+    store.delete(value); 
+  }
+
+  function clearObjectStore(db,storeName){
+    var transaction=db.transaction(storeName,'readwrite'); 
+    var store=transaction.objectStore(storeName); 
+    store.clear();
+	}
+	</script>
+</body>
+</html>
